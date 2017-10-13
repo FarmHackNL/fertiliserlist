@@ -15,8 +15,8 @@ class Reader(object):
 class GDOCReader(Reader):
     def __init__(self, hash, gid, fname=None):
         super(GDOCReader, self).__init__()
-        self.hash = hash
-        self.gid = gid
+        self.hash = '1oplc6Zr62abCfWWfN68MPQUT8uVkaa6Mr8sDHl2LKNQ'
+        self.gid = '0'
         self.columns = ['Name', 'From', 'To', 'Country',
                 'Type', 'Unit', 'SpecificWeight', 'Volume',
                 'N', 'Norg', 'Nmin', 'N-slow', 'N-ureum', 'NH4', 'NO3', 'N-Amide',
