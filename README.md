@@ -8,3 +8,10 @@ country with their relevant attributes.
 This list provides a common/trade name, a code, unit of application, nutrients-contents, and more.
 
 We aim to make this a reasonably complete list.
+
+## Contributing
+
+You can extend and improve this list by 
+
+- submiting a pull request
+- editing the underlying [Google Sheets](https://docs.google.com/spreadsheets/d/1oplc6Zr62abCfWWfN68MPQUT8uVkaa6Mr8sDHl2LKNQ/edit#gid=0) document.
