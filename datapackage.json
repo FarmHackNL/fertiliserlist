@@ -1,0 +1,14 @@
+{
+  "resources": [{
+      "name": "Fertilisers NL",
+      "path": "data/fertilisers_NL.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+    }],
+  "name": "fertiliserslist",
+  "title": "List of fertilisers",
+  "description": "List of fertilisers in NL",
+  "homepage": "https://github.com/FarmHackNL/fertiliserlist",
+  "version": "0.1.0",
+  "license": "ODC-PDDL-1.0"
+}
