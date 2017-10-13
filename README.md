@@ -15,3 +15,11 @@ You can extend and improve this list by
 
 - submiting a pull request
 - editing the underlying [Google Sheets](https://docs.google.com/spreadsheets/d/1oplc6Zr62abCfWWfN68MPQUT8uVkaa6Mr8sDHl2LKNQ/edit#gid=0) document.
+
+## Compose data package
+
+Run `./scripts/reader.py` to load our shared google docs sheet into the 'data/fertilisers.csv' datapackage.
+
+## How to use
+
+We use the Frictionless Datapackages approach for distributing this data. See http://frictionlessdata.io/data-packages/ for more info.

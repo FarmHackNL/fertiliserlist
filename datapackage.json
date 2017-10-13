@@ -4,6 +4,11 @@
       "path": "data/fertilisers_NL.csv",
       "format": "csv",
       "mediatype": "text/csv",
+    },{
+      "name": "Fertilisers combined",
+      "path": "data/fertilisers.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
     }],
   "name": "fertiliserslist",
   "title": "List of fertilisers",
