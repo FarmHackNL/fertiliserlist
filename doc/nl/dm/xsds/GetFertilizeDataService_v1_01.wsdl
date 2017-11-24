@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://services.fertil/"
+             xmlns:tns="http://services.fertil/"
+             xmlns:wsdltypes="XSD_WS-Fertilizer_v1_00"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:schema="http://services.fertil/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2015/01/partner-link/">
+              
+  <!-- types -->
+  <types>
+    <schema  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://services.fertil/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:schema="http://services.fertil/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="XSD_WS-Fertilizer_v1_00" schemaLocation="XSD_Webservice_Fertilizer_v1_00.xsd"/>
+    </schema>
+  </types>
+  
+  <!-- messages -->
+  <message name="getListAvailableFertilizersRequestMsg">
+    <part name="parameters" element="wsdltypes:getListAvailableFertilizersRequest"/>
+  </message>
+  <message name="getListAvailableFertilizerstResponseMsg">
+    <part name="parameters" element="wsdltypes:getListAvailableFertilizerstResponse"/>
+  </message>
+  <message name="getDetailsFertilizerRequestMsg">
+    <part name="parameters" element="wsdltypes:getDetailsFertilizerRequest"/>
+  </message>
+  <message name="getDetailsFertilizerResponseMsg">
+    <part name="parameters" element="wsdltypes:getDetailsFertilizerResponse"/>
+  </message>
+  
+  <!-- portTypes -->
+  <portType name="GetFertilizerDataService">
+    <operation name="getListAvailableFertilizers">
+      <input name="getListAvailableFertilizersRequest"
+             message="tns:getListAvailableFertilizersRequestMsg" />
+      <output name="getListAvailableFertilizerstResponse"
+              message="tns:getListAvailableFertilizerstResponseMsg" />
+    </operation>
+    <operation name="getDetailsFertilizer">
+      <input name="ggetDetailsFertilizerRequest"
+             message="tns:getDetailsFertilizerRequestMsg" />
+      <output name="getDetailsFertilizerResponse"
+              message="tns:getDetailsFertilizerResponseMsg" />
+    </operation>
+  </portType>
+  
+  <!-- bindings -->
+  <binding name="GetFertilizerDataServiceBinding" type="tns:GetFertilizerDataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getListAvailableFertilizers">
+      <soap:operation soapAction="getListAvailableFertilizers"/>
+      <input><soap:body use="literal" parts="parameters"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+    <operation name="getDetailsFertilizer">
+      <soap:operation soapAction="getDetailsFertilizer"/>
+      <input><soap:body use="literal" parts="parameters"/></input>
+      <output><soap:body use="literal"/></output>
+    </operation>
+  </binding>
+  
+  <!-- service -->
+  <service name="GetFertilizerDataServiceService">
+    <port name="GetFertilizerDataService" binding="tns:GetFertilizerDataServiceBinding">
+      <soap:address location="http://localhost:......./fertilServices/services/GetFertilizerDataServiceService"/>
+    </port>
+  </service>
+</definitions>
+

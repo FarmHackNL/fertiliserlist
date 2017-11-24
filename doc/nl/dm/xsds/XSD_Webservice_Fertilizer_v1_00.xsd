@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Conny Graumans (EDI Agro Vereniging) -->
+<!--XSD's voor de webservice LOR_soil_crop_silage. Last update: 24mei15-->
+<xsd:schema xmlns:wsfer="XSD_WS-Fertilizer_v1_00" xmlns:fert="FertilizerMessage" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="XSD_WS-Fertilizer_v1_00" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" schemaLocation="http://www.unece.org/uncefact/data/standard/UnqualifiedDataType_10p0.xsd"/>
+	<xsd:import namespace="FertilizerMessage" schemaLocation="FertilizerData_v4_0.xsd"/>
+	<xsd:element name="getListAvailableFertilizersRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="RequestingParty" type="udt:IDType"/>
+				<xsd:element name="FertilizeCategoryCode" type="udt:CodeType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getListAvailableFertilizerstResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ResponseStatusCode" type="wsfer:StatusCodeType"/>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="BasicDataFertilizer" type="wsfer:BasicDataFertilizerType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getListNewFertilizersRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="RequestingParty" type="udt:IDType"/>
+				<xsd:element name="SinceDate" type="udt:DateTimeType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getListNewFertilizersResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ResponseStatusCode" type="wsfer:StatusCodeType"/>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="BasicDataFertilizer" type="wsfer:BasicDataFertilizerType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getDetailsFertilizerRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="RequestingParty" type="udt:IDType"/>
+				<xsd:element name="ProductID" type="udt:IDType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getDetailsFertilizerResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ResponseStatusCode" type="wsfer:StatusCodeType"/>
+				<xsd:element name="MessageID" type="udt:IDType"/>
+				<xsd:element name="FertilizerData" type="fert:ProductType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="BasicDataFertilizerType">
+		<xsd:sequence>
+			<xsd:element name="ProductID" type="udt:IDType"/>
+			<xsd:element name="ProductDesignator" type="udt:TextType"/>
+			<xsd:element name="FertilizerCategoryCode" type="udt:CodeType" minOccurs="0"/>
+			<xsd:element name="Manucaturer" type="wsfer:ManufacturerType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ManufacturerType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IDType"/>
+			<xsd:element name="Name" type="udt:TextType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IDType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute name="schemeID" type="xsd:token" use="optional"/>
+			</xsd:extension>
+			<!--xsd:attribute name="schemeName" type="xsd:string" use="optional"/-->
+			<!--xsd:attribute name="schemeAgencyID" type="xsd:string" use="optional"/-->
+			<!--xsd:attribute name="schemeAgencyName" type="xsd:string" use="optional"/-->
+			<!--xsd:attribute name="schemeVersionID" type="xsd:token" use="optional"/-->
+			<!--xsd:attribute name="schemeDataURI" type="xsd:anyURI" use="optional"/-->
+			<!--xsd:attribute name="schemeURI" type="xsd:anyURI" use="optional"/-->
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="StatusCodeType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="000"/>
+			<xsd:maxInclusive value="999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

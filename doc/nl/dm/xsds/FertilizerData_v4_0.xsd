@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Conny Graumans (EDI Agro Vereniging) -->
+<!--Fertilizer-message, to exchange data about fertilizers. Edited with XMLSpy v2008 sp1 (http://www.altova.com) by Conny Graumans (AgroConnect) -->
+<!--130122, CG: eerste aanzet.-->
+<!--xmlns:gml="http://www.opengis.net/gml/3.2"-->
+<!--<xsd:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://www.opengis.net/gml/3.2"/>-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fert="FertilizerMessage" xmlns:cdt="http://www.agroconnect.nl/Portals/10/XSDs/XSDs_EDI_Crop/v4_0/SimpleTypes_EDI-Crop_v4_0" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:9" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:9" targetNamespace="FertilizerMessage" elementFormDefault="qualified" attributeFormDefault="unqualified" version="8.0">
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" schemaLocation="http://www.unece.org/uncefact/data/standard/UnqualifiedDataType_10p0.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:QualifiedDataType:9" schemaLocation="http://www.unece.org/uncefact/data/standard/QualifiedDataType_9p0.xsd"/>
+	<xsd:import namespace="http://www.agroconnect.nl/Portals/10/XSDs/XSDs_EDI_Crop/v4_0/SimpleTypes_EDI-Crop_v4_0" schemaLocation="http://www.agroconnect.nl/Portals/10/XSDs/XSDs_EDI_Crop/v4_0/SimpleTypes_EDI-Crop_v4_0.xsd"/>
+	<xsd:element name="FertilizerMessage" type="fert:FertilizerMessageType"/>
+	<xsd:complexType name="FertilizerMessageType">
+		<xsd:sequence>
+			<xsd:element name="ExchangedDocument" type="fert:DocumentType"/>
+			<xsd:element name="Product" type="fert:ProductType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductType">
+		<xsd:sequence>
+			<xsd:element name="ProductID" type="udt:IDType"/>
+			<xsd:element name="ProductDesignator" type="udt:TextType"/>
+			<xsd:element name="ProductDescription" type="udt:TextType"/>
+			<xsd:element name="ProductCategory" type="fert:ProductCategoryType"/>
+			<xsd:element name="PhysicalForm" type="fert:PhysicalFormType"/>
+			<xsd:element name="Manufacturer" type="fert:SpecifiedPartyType"/>
+			<xsd:element name="Supplier" type="fert:SpecifiedPartyType" minOccurs="0"/>
+			<xsd:element name="Trader" type="fert:SpecifiedPartyType" minOccurs="0"/>
+			<xsd:element name="Blender" type="fert:SpecifiedPartyType" minOccurs="0"/>
+			<xsd:element name="Safetysheet" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Formula" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Supplement" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="SKAL-Accepted" type="cdt:YesNoType" minOccurs="0"/>
+			<xsd:element name="EC-Accepted" type="cdt:YesNoType" minOccurs="0"/>
+			<xsd:element name="GeneralApplicationInstruction" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="AdvicedApplicationDose" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="ContainerCategory" type="fert:ContainerCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Batch" type="fert:BatchType" minOccurs="0"/>
+			<xsd:element name="ProductComposition" type="fert:ProductCompositionType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PhysicalProperty" type="fert:PhysicalPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="LogisticRegulation" type="fert:LogisticRegulationType" minOccurs="0"/>
+			<xsd:element name="ApplicationMedium" type="fert:ApplicationMediumType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ScopeOfApplication" type="fert:ScopeOfApplicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Comment" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductCompositionType">
+		<xsd:sequence>
+			<xsd:element name="ProductElementCategoryCode" type="udt:CodeType"/>
+			<xsd:element name="ProductElementCode" type="udt:CodeType"/>
+			<xsd:element name="ProductElementDesignator" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="StandardRate" type="fert:QuantityType"/>
+			<xsd:element name="AnalysedRate" type="fert:QuantityType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BatchType">
+		<xsd:sequence>
+			<xsd:element name="BatchID" type="udt:IDType"/>
+			<xsd:element name="BatchDesignator" type="udt:TextType"/>
+			<xsd:element name="Quantity" type="fert:QuantityType" minOccurs="0" maxOccurs="2"/>
+			<xsd:element name="Container" type="fert:ContainerType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContainerType">
+		<xsd:sequence>
+			<xsd:element name="ContainerID" type="udt:IDType"/>
+			<xsd:element name="ContainerText" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Quantity" type="fert:QuantityType" minOccurs="0" maxOccurs="2"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContainerCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ContainerCategoryCode" type="udt:CodeType"/>
+			<xsd:element name="ContainerCategoryDesignator" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Quantity" type="fert:QuantityType" minOccurs="0" maxOccurs="2"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhysicalFormType">
+		<xsd:sequence>
+			<xsd:element name="PhysicalFormCode" type="udt:CodeType"/>
+			<xsd:element name="PhysicalFormDesignator" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ProductCategoryCode" type="udt:CodeType"/>
+			<xsd:element name="ProductCategoryName" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LogisticRegulationType">
+		<xsd:sequence>
+			<xsd:element name="TransportConditions" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="UN_Number" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="RID_Class" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="ADR_Class" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="ADNR_CLass" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="IMO_CLass" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="CPR1_Class" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="PGS7_Class" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="StorageConditions" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="StorageTemperature" type="udt:NumericType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhysicalPropertyType">
+		<xsd:sequence>
+			<xsd:element name="PhysicalPropertyCode" type="udt:CodeType"/>
+			<xsd:element name="PhysicalPropertyDesignator" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="PhysicalPropertyValue" type="fert:QuantityType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NutrientType">
+		<xsd:sequence>
+			<xsd:element name="NutrientCode" type="udt:CodeType"/>
+			<xsd:element name="PropertyValue" type="fert:PropertyValueType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ApplicationMediumType">
+		<xsd:sequence>
+			<xsd:element name="ApplicationMediumCode" type="udt:CodeType"/>
+			<xsd:element name="ApplicationMediumDesignator" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ScopeOfApplicationType">
+		<xsd:sequence>
+			<xsd:element name="ScopeOfApllicationCode" type="udt:CodeType"/>
+			<xsd:element name="ScopeOfApllicationDesignator" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PropertyValueType">
+		<xsd:sequence>
+			<xsd:element name="StandardValue" type="fert:QuantityType"/>
+			<xsd:element name="AnalysedValue" type="fert:QuantityType" minOccurs="0"/>
+			<xsd:element name="Comments" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CompositionType">
+		<xsd:sequence>
+			<xsd:element name="ProductElementID" type="udt:IDType"/>
+			<xsd:element name="ProductElementDesignator" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Quantity" type="cdt:Decimal4Type"/>
+			<xsd:element name="ConcentrationCode" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactPersonType">
+		<xsd:sequence>
+			<xsd:element name="FamilyName" type="udt:TextType"/>
+			<xsd:element name="GivenName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="FamilyNamePrefix" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Title" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EmailCommunicationType">
+		<xsd:sequence>
+			<xsd:element name="URIID" type="udt:IDType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IDType"/>
+			<xsd:element name="Type" type="cdt:MessageTypeType"/>
+			<xsd:element name="EdiCropVersion" type="cdt:EdiCropVersionType"/>
+			<xsd:element name="MessageTypeVersion" type="cdt:MessageTypeVersionType"/>
+			<xsd:element name="IssueDate" type="udt:DateTimeType"/>
+			<xsd:element name="ReportCount" type="udt:NumericType" minOccurs="0"/>
+			<xsd:element name="Description" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="LineItem" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Issuer" type="fert:SpecifiedPartyType"/>
+			<xsd:element name="Sender" type="fert:SpecifiedPartyType"/>
+			<xsd:element name="Receiver" type="fert:SpecifiedPartyType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GUIDType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="IssuingAgency" type="cdt:IssuingAgencyType"/>
+				<xsd:attribute name="EnterpriseID" type="cdt:EnterpriseIDType"/>
+				<xsd:attribute name="ItemIdType" type="cdt:ItemIdTypeType"/>
+				<xsd:attribute name="ItemIdNumber" type="cdt:ItemIdNumberType"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="QuantityType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="unitCode" type="cdt:UnitCodeType"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyContactType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IDType"/>
+			<xsd:element name="PersonName" type="udt:TextType"/>
+			<xsd:element name="DepartmentName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="JobTitle" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Responsibility" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Type" type="udt:CodeType" minOccurs="0"/>
+			<xsd:element name="AdditionalIdentification" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Telephone" type="fert:SpecifiedCommunicationType" minOccurs="0"/>
+			<xsd:element name="MobileTelephone" type="fert:SpecifiedCommunicationType" minOccurs="0"/>
+			<xsd:element name="Fax" type="fert:SpecifiedCommunicationType" minOccurs="0"/>
+			<xsd:element name="Email" type="fert:SpecifiedCommunicationType" minOccurs="0"/>
+			<xsd:element name="ContactPerson" type="fert:ContactPersonType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductAllocationType">
+		<xsd:sequence>
+			<xsd:element name="ProductAllocationID" type="udt:IDType"/>
+			<xsd:element name="ProductCode" type="udt:CodeType"/>
+			<xsd:element name="Quantity" type="fert:QuantityType"/>
+			<xsd:element name="BatchID" type="udt:IDType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductTypeType">
+		<xsd:sequence>
+			<xsd:element name="ProductTypeIDRef" type="udt:IDType" minOccurs="0"/>
+			<xsd:element name="ProductTypeName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="RegulatoryWorkingCoefficient" type="cdt:Decimal4Type" minOccurs="0"/>
+			<xsd:element name="AgronomicWorkingCoefficient" type="cdt:Decimal4Type" minOccurs="0"/>
+			<xsd:element name="Quantity" type="fert:QuantityType" minOccurs="0"/>
+			<xsd:element name="AmountPerAreaUnit" type="fert:QuantityType" minOccurs="0"/>
+			<xsd:element name="Composition" type="fert:CompositionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecifiedDatasetType">
+		<xsd:sequence>
+			<xsd:element name="DatasetType" type="udt:CodeType"/>
+			<xsd:element name="BeginDate" type="udt:DateTimeType" minOccurs="0"/>
+			<xsd:element name="EndDate" type="udt:DateTimeType" minOccurs="0"/>
+			<xsd:element name="CropTypeCode" type="udt:CodeType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecifiedPartyType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IDType"/>
+			<xsd:element name="Name" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="Country" type="udt:CodeType" minOccurs="0"/>
+			<xsd:element name="PostalAddress" type="fert:StructuredAddressType" minOccurs="0"/>
+			<xsd:element name="VisitorsAddress" type="fert:StructuredAddressType" minOccurs="0"/>
+			<xsd:element name="PartyContact" type="fert:PartyContactType" minOccurs="0"/>
+			<xsd:element name="Website" type="fert:SpecifiedCommunicationType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecifiedCommunicationType">
+		<xsd:sequence>
+			<xsd:element name="URI" type="udt:IDType" minOccurs="0"/>
+			<xsd:element name="CompleteNumber" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StructuredAddressType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IDType" minOccurs="0"/>
+			<xsd:element name="PostcodeCode" type="udt:CodeType"/>
+			<xsd:element name="BuildingName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="StreetName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="CityName" type="udt:TextType"/>
+			<xsd:element name="Country" type="qdt:CountryIDType"/>
+			<xsd:element name="CountryName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="PostOfficeBox" type="udt:TextType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReferencedCountryType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="udt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ID" type="udt:IDType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecifiedClassificationType">
+		<xsd:sequence>
+			<xsd:element name="ClassCode" type="udt:CodeType" minOccurs="0"/>
+			<xsd:element name="ClassName" type="udt:TextType" minOccurs="0"/>
+			<xsd:element name="CountryID" type="udt:IDType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
