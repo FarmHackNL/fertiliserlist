@@ -1,1 +1,8 @@
 myscripts
+*.pyc
+*.DS_Store
+.~lock.*
+.idea/
+.cache
+.project
+
